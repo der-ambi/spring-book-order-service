@@ -21,6 +21,7 @@ repositories {
 ext {
     set('springCloudVersion', "2023.0.3")
     set('testcontainersVersion', '1.20.1')
+    set('testcontainersKeycloakVersion', '3.4.0')
 }
 
 dependencies {
@@ -34,6 +35,7 @@ dependencies {
     implementation platform("org.testcontainers:testcontainers-bom:${testcontainersVersion}")
     implementation 'org.springframework.cloud:spring-cloud-stream-binder-rabbit'
     implementation 'io.github.oshai:kotlin-logging-jvm:5.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     runtimeOnly 'org.flywaydb:flyway-core'
     runtimeOnly 'org.flywaydb:flyway-database-postgresql'
     runtimeOnly 'org.springframework:spring-jdbc'
@@ -48,6 +50,8 @@ dependencies {
     testImplementation 'org.testcontainers:r2dbc'
     testImplementation 'com.squareup.okhttp3:mockwebserver'
     testImplementation("org.springframework.cloud:spring-cloud-stream-test-binder")
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation "com.github.dasniko:testcontainers-keycloak:${testcontainersKeycloakVersion}"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
