@@ -1,9 +1,6 @@
 package de.bashburg.springbook.orderservice.order.domain
 
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.Id
-import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.annotation.Version
+import org.springframework.data.annotation.*
 import org.springframework.data.relational.core.mapping.Table
 import java.time.Instant
 
@@ -21,8 +18,14 @@ data class Order(
     @CreatedDate
     val createdDate: Instant?,
 
+    @CreatedBy
+    val createdBy: String?,
+
     @LastModifiedDate
     val lastModifiedDate: Instant?,
+
+    @LastModifiedBy
+    val lastModifiedBy: String?,
 
     @Version
     val version: Int = 0
@@ -42,7 +45,9 @@ data class Order(
                 quantity = quantity,
                 status = status,
                 lastModifiedDate = null,
+                lastModifiedBy = null,
                 createdDate = null,
+                createdBy = null,
                 id = null
             )
         }
