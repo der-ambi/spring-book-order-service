@@ -58,5 +58,8 @@ management:
       show-components: always
       probes:
         enabled: true
+      group:
+        readiness:
+          include: readinessState,r2dbc,rabbit
 polar:
   catalog-service-uri: http://localhost:9001
