@@ -15,6 +15,7 @@ class SecurityConfig {
     fun springSecurityFilterChain(http: ServerHttpSecurity): SecurityWebFilterChain {
         return http {
             authorizeExchange {
+                authorize("/actuator/**", permitAll)
                 authorize(anyExchange, authenticated)
             }
             oauth2ResourceServer {
